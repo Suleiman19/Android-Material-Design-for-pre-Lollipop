@@ -1,0 +1,41 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerview" />
+
+    <LinearLayout
+        android:id="@+id/fabhide_toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/shadow" />
+
+    </LinearLayout>
+
+
+    <com.getbase.floatingactionbutton.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_icon="@drawable/ic_action_add"
+        fab:fab_colorNormal="@color/accent_500"
+        fab:fab_colorPressed="@color/accent_700"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="@dimen/fab_actions_spacing"
+        android:layout_marginBottom="16dp" />
+
+</FrameLayout>
