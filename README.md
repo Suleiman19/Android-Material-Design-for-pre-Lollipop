@@ -8,3 +8,5 @@ Implements various Material Design components, that go by the design guidelines.
 Demonstrates animation similar to the Google+ app. The toolbar and Floating Action Button (FAB) hide upon scrolling down, and translate back up when scrolled up.
 
 Plus the FAB greets users with a grow animation upon entrance.
+
+NOTE: I've used my own implementation for a FAB (Check myfab.xml).
