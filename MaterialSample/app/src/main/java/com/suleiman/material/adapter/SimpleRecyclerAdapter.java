@@ -21,14 +21,17 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     Boolean isHomeList = false;
 
     public static List<String> homeActivitiesList = new ArrayList<String>();
+    public static List<String> homeActivitiesSubList = new ArrayList<String>();
     Context context;
     OnItemClickListener clickListener;
 
 
     public void setHomeActivitiesList(Context context) {
         String[] listArray = context.getResources().getStringArray(R.array.home_activities);
+        String[] subTitleArray = context.getResources().getStringArray(R.array.home_activities_subtitle);
         for (int i = 0; i < listArray.length; ++i) {
             homeActivitiesList.add(listArray[i]);
+            homeActivitiesSubList.add(subTitleArray[i]);
         }
     }
 
@@ -54,10 +57,12 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
     @Override
     public void onBindViewHolder(VersionViewHolder versionViewHolder, int i) {
-        if (!isHomeList)
-            versionViewHolder.versionTxt.setText(versionModels.get(i));
-        else
-            versionViewHolder.versionTxt.setText(homeActivitiesList.get(i));
+        if (isHomeList) {
+            versionViewHolder.title.setText(homeActivitiesList.get(i));
+            versionViewHolder.subTitle.setText(homeActivitiesSubList.get(i));
+        } else {
+            versionViewHolder.title.setText(versionModels.get(i));
+        }
     }
 
     @Override
@@ -71,16 +76,21 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
     public class VersionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cardItemLayout;
-        TextView versionTxt;
+        TextView title;
+        TextView subTitle;
 
         public VersionViewHolder(View itemView) {
             super(itemView);
 
             cardItemLayout = (CardView) itemView.findViewById(R.id.cardlist_item);
-            versionTxt = (TextView) itemView.findViewById(R.id.listitem_name);
+            title = (TextView) itemView.findViewById(R.id.listitem_name);
+            subTitle = (TextView) itemView.findViewById(R.id.listitem_subname);
 
-            if (isHomeList)
+            if (isHomeList) {
                 itemView.setOnClickListener(this);
+            } else {
+                subTitle.setVisibility(View.GONE);
+            }
 
         }
 

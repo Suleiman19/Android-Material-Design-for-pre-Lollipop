@@ -1,5 +1,6 @@
 package com.suleiman.material.activities;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,28 +13,28 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
+import com.suleiman.material.model.VersionModel;
 import com.suleiman.material.utils.MyRecyclerScroll;
 import com.suleiman.material.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.VersionModel;
-
 
 public class FabHideActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
-    FloatingActionButton fab;
     int fabMargin;
     LinearLayout toolbarContainer;
     int toolbarHeight;
+    FrameLayout fab;
 
 
     @Override
@@ -48,7 +49,7 @@ public class FabHideActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //  FAB margin needed for animation
-        fabMargin = getResources().getDimensionPixelSize(R.dimen.fab_actions_spacing);
+        fabMargin = getResources().getDimensionPixelSize(R.dimen.fab_margin);
         // toolbar.getHeight() returns 0, so we'll get the value from the dimen resources XML
         toolbarHeight = Utils.getToolbarHeight(this);
 
@@ -96,9 +97,14 @@ public class FabHideActivity extends AppCompatActivity {
             }
         });
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.startAnimation(animation);
+        fab = (FrameLayout) findViewById(R.id.myfab_main);
+        ImageButton fabBtn=(ImageButton)findViewById(R.id.myfab_main_btn);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            fabBtn.setBackground(getDrawable(R.drawable.fab_selector_ripple));
+        }
+
+        fab.startAnimation(animation);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

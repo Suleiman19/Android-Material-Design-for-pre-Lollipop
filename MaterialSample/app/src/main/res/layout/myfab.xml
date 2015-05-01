@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp"
+    android:id="@+id/myfab_main"
+    android:layout_gravity="bottom|right">
+
+
+    <ImageButton
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:id="@+id/myfab_main_btn"
+        android:cropToPadding="true"
+        android:background="@drawable/fab_selector"
+        android:src="@drawable/ic_action_add"></ImageButton>
+
+    <View
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:background="@drawable/fab_shadow" />
+
+</FrameLayout>

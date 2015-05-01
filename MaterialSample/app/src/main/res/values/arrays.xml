@@ -2,7 +2,11 @@
 <resources>
 
     <string-array name="home_activities">
-        <item>Floating Action Button</item>
-
+        <item>FAB &amp; Toolbar Animation</item>
     </string-array>
+
+    <string-array name="home_activities_subtitle">
+        <item>G+ like on scroll hide animation</item>
+    </string-array>
+
 </resources>
