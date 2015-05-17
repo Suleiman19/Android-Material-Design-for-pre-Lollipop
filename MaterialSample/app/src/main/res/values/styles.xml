@@ -8,7 +8,12 @@
         <item name="colorAccent">@color/accent_500</item>
         <item name="android:windowBackground">@color/background_material_light</item>
         <item name="windowActionBar">false</item>
+    </style>
 
+    <style name="MyAppDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/primary_500</item>
+        <item name="colorPrimaryDark">@color/primary_700</item>
+        <item name="colorAccent">@color/accent_500</item>
     </style>
 
 </resources>

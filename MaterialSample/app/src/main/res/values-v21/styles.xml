@@ -8,7 +8,7 @@
         <item name="android:colorAccent">@color/accent_500</item>
 
         <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
 
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>

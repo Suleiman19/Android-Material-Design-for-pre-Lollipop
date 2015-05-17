@@ -8,17 +8,22 @@
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="@dimen/cardview_default_elevation"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_margin="8dp">
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:padding="8dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:gravity="center_vertical"
         android:layout_height="?attr/listPreferredItemHeight"
         android:orientation="vertical">
 
         <TextView
-
             android:id="@+id/listitem_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Test"
+            android:paddingTop="3dp"
             android:textColor="@color/secondary_text_default_material_light"
             android:textSize="@dimen/abc_text_size_caption_material" />
     </LinearLayout>

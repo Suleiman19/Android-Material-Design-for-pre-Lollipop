@@ -3,10 +3,14 @@
 
     <string-array name="home_activities">
         <item>FAB &amp; Toolbar Animation</item>
+        <item>Transparent Toolbar Test</item>
+
     </string-array>
 
     <string-array name="home_activities_subtitle">
         <item>G+ like on scroll hide animation</item>
+        <item>Overlayed transparent Toolbar</item>
+
     </string-array>
 
 </resources>

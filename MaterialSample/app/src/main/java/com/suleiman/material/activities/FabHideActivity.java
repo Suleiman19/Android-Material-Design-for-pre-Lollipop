@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +36,8 @@ public class FabHideActivity extends AppCompatActivity {
     LinearLayout toolbarContainer;
     int toolbarHeight;
     FrameLayout fab;
+    ImageButton fabBtn;
+    View fabShadow;
 
 
     @Override
@@ -65,7 +68,6 @@ public class FabHideActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        //Make the RecyclerView show a list
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Adding list data thrice for a more comfortable scroll.
@@ -98,22 +100,25 @@ public class FabHideActivity extends AppCompatActivity {
         });
 
         fab = (FrameLayout) findViewById(R.id.myfab_main);
-        ImageButton fabBtn=(ImageButton)findViewById(R.id.myfab_main_btn);
+        fabBtn = (ImageButton) findViewById(R.id.myfab_main_btn);
+        fabShadow = findViewById(R.id.myfab_shadow);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            fabBtn.setBackground(getDrawable(R.drawable.fab_selector_ripple));
+            fabShadow.setVisibility(View.GONE);
+            fabBtn.setBackground(getDrawable(R.drawable.ripple_accent));
+
         }
 
         fab.startAnimation(animation);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("CLICK", "FAB CLICK");
                 Toast.makeText(getBaseContext(), "FAB Clicked", Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
     }
 
