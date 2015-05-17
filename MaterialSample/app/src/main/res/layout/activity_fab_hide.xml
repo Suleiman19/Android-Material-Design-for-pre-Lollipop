@@ -5,11 +5,10 @@
     tools:context=".MainActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:clipToPadding="false"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerview"
-        android:visibility="gone" />
+        android:clipToPadding="false" />
 
     <LinearLayout
         android:id="@+id/fabhide_toolbar_container"

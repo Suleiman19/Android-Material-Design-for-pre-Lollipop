@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@android:id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/abc_spinner_mtrl_am_alpha"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="16dp"
+        android:paddingRight="4dp"
+        android:textColor="#ffffffff"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,9 +1,7 @@
 package com.suleiman.material.activities;
 
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,7 +11,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.suleiman.material.R;
 import com.suleiman.material.utils.Utils;
@@ -105,21 +102,6 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
 
             }
         });
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAppDialog);
-        builder.setTitle("Dialog Title").setMessage("This is an alert dialog message.").setCancelable(true).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getBaseContext(), "Ok!", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-
-            }
-        }).setNegativeButton("DISMISS", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).show();
 
     }
 

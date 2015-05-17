@@ -1,0 +1,37 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/primary_500"
+    tools:context="com.suleiman.material.activities.ToolbarOverlayActivity">
+
+
+    <FrameLayout
+
+        android:id="@+id/trans_bg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="25dp"
+        android:background="@drawable/simplecircle"></FrameLayout>
+
+    <include layout="@layout/myfab" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/test_statusbar_holder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/statusbar_size"
+            android:visibility="invisible" />
+
+        <include layout="@layout/toolbar_transparent" />
+    </LinearLayout>
+
+
+</FrameLayout>
