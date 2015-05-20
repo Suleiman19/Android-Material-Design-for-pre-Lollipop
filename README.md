@@ -16,7 +16,7 @@ Option to enable fading for the Toolbar on hide and show. Similar to the effect 
 NOTE: I've used my own implementation for a FAB (Check myfab.xml).
 
 2. Transparent Toolbar
-Transparent and overlayed toolbar. On Lollipop devices, even the status bar is transparent. The FAB on click, shows a custom ripple-like effect for the entire background. It's nothing but a simple circle shape with a grow animation. (Useful for pre-Lollipop devices).
+Transparent and overlayed toolbar. On Lollipop devices, even the status bar is transparent. The FAB on click, shows a custom ripple-like effect for the entire background. It's nothing but a simple circle shape with a grow animation. (Useful for pre-Lollipop).
 
 
 
