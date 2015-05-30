@@ -24,5 +24,10 @@
         <item name="android:overlapAnchor">true</item>
     </style>
 
+    <style name="AppTheme.Transparent" parent="AppTheme">
+
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
 
 </resources>

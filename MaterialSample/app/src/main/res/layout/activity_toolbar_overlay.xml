@@ -7,15 +7,13 @@
     android:background="@color/primary_500"
     tools:context="com.suleiman.material.activities.ToolbarOverlayActivity">
 
-
     <FrameLayout
-
         android:id="@+id/trans_bg"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="25dp"
-        android:background="@drawable/simplecircle"></FrameLayout>
+        android:background="@drawable/simplecircle" />
 
     <include layout="@layout/myfab" />
 
@@ -31,7 +29,7 @@
             android:visibility="invisible" />
 
         <include layout="@layout/toolbar_transparent" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </FrameLayout>

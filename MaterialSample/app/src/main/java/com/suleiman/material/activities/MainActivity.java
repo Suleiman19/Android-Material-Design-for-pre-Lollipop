@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, ToolbarOverlayActivity.class);
                         startActivity(intent);
                         break;
+                    case 2:
+                        intent = new Intent(MainActivity.this, NavDrawerActivity.class);
+                        startActivity(intent);
+                        break;
                     default:
                         Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
                 }

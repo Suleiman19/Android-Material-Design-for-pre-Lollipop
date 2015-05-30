@@ -3,9 +3,7 @@
     android:id="@+id/myfab_main"
     android:layout_width="100dp"
     android:layout_height="100dp"
-    android:layout_gravity="bottom|right">
-
-
+    android:layout_gravity="bottom|end">
 
     <View
         android:id="@+id/myfab_shadow"
@@ -14,9 +12,7 @@
         android:layout_gravity="center"
         android:background="@drawable/fab_shadow" />
 
-
     <ImageButton
-
         android:id="@+id/myfab_main_btn"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
@@ -26,6 +22,5 @@
         android:padding="20dp"
         android:src="@drawable/ic_action_add"
         android:stateListAnimator="@animator/fab_elevation_selector" />
-
 
 </FrameLayout>
