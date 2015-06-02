@@ -41,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new SimpleRecyclerAdapter(this);
-        recyclerView.setAdapter(adapter);
+
+        if (adapter == null) {
+            adapter = new SimpleRecyclerAdapter(this);
+            recyclerView.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
 
         final Context context = this;
 
@@ -60,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         intent = new Intent(MainActivity.this, NavDrawerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(MainActivity.this, AnimateToolbar.class);
                         startActivity(intent);
                         break;
                     default:

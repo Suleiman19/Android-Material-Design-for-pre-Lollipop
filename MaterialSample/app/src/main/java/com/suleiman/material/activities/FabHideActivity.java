@@ -46,6 +46,7 @@ public class FabHideActivity extends AppCompatActivity {
     ImageButton fabBtn;
     View fabShadow;
     boolean fadeToolbar = false;
+    SimpleRecyclerAdapter simpleRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +124,13 @@ public class FabHideActivity extends AppCompatActivity {
             }
         }
 
-        SimpleRecyclerAdapter simpleRecyclerAdapter = new SimpleRecyclerAdapter(listData);
-        recyclerView.setAdapter(simpleRecyclerAdapter);
+        if (simpleRecyclerAdapter == null) {
+            simpleRecyclerAdapter = new SimpleRecyclerAdapter(listData);
+            recyclerView.setAdapter(simpleRecyclerAdapter);
+        } else {
+            simpleRecyclerAdapter.notifyDataSetChanged();
+        }
+
 
         recyclerView.addOnScrollListener(new MyRecyclerScroll() {
             @Override

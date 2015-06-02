@@ -5,6 +5,7 @@
         <item>FAB &amp; Toolbar Animation</item>
         <item>Transparent Toolbar Test</item>
         <item>Navigation Drawer</item>
+        <item>Toolbar Animation with Image</item>
 
     </string-array>
 
@@ -12,6 +13,7 @@
         <item>G+ like on scroll hide animation</item>
         <item>Overlayed transparent Toolbar</item>
         <item>Using the new Support Design library</item>
+        <item>Using Palette class for dynamic Toolbar color</item>
 
     </string-array>
 

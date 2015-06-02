@@ -21,11 +21,14 @@
             android:label="@string/title_fab_animations" />
         <activity
             android:name=".activities.ToolbarOverlayActivity"
-            android:label="@string/title_activity_toolbar_test"/>
+            android:label="@string/title_activity_toolbar_test" />
         <activity
             android:name=".activities.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
-            android:theme="@style/AppTheme.Transparent"/>
+            android:theme="@style/AppTheme.Transparent" />
+        <activity
+            android:name=".activities.AnimateToolbar"
+            android:label="@string/title_activity_animate_toolbar"></activity>
     </application>
 
 </manifest>

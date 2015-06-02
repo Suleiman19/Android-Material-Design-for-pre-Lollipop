@@ -22,4 +22,5 @@
         <item name="overlapAnchor">true</item>
     </style>
 
+    <style name="AppTheme.Transparent" parent="AppTheme"></style>
 </resources>
