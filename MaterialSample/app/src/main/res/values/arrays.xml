@@ -6,14 +6,16 @@
         <item>Transparent Toolbar Test</item>
         <item>Navigation Drawer</item>
         <item>Toolbar Animation with Image</item>
+        <item>Material Style Tabs</item>
 
     </string-array>
 
     <string-array name="home_activities_subtitle">
         <item>G+ like on scroll hide animation</item>
-        <item>Overlayed transparent Toolbar</item>
+        <item>Overlaid transparent Toolbar</item>
+        <item>Material Design drawer with scrim</item>
         <item>Using the new Support Design library</item>
-        <item>Using Palette class for dynamic Toolbar color</item>
+        <item>Tab strip with Design support lib</item>
 
     </string-array>
 

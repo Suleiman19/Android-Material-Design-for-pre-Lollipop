@@ -32,7 +32,7 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            getWindow().setStatusBarColor(getResources().getColor(R.color.blank_trans80));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.black_trans80));
 
             statusBarHeight = Utils.getStatusBarHeight(this);
             isStatusBarTransparent = true;
@@ -45,6 +45,7 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_transparent);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         statusBarHolderView = findViewById(R.id.test_statusbar_holder);
         if (!isStatusBarTransparent) {
@@ -107,23 +108,19 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_test, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.action_settings:
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

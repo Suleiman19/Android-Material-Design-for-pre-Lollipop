@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         listItem = (CardView) findViewById(R.id.cardlist_item);
         recyclerView = (RecyclerView) findViewById(R.id.home_recyclerview);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -45,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         if (adapter == null) {
             adapter = new SimpleRecyclerAdapter(this);
             recyclerView.setAdapter(adapter);
-        } else {
-            adapter.notifyDataSetChanged();
         }
 
         final Context context = this;
@@ -69,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         intent = new Intent(MainActivity.this, AnimateToolbar.class);
+                        startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(MainActivity.this, TabAnimationActivity.class);
                         startActivity(intent);
                         break;
                     default:

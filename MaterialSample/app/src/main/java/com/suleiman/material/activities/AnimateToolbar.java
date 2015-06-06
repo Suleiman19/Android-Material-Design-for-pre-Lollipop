@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimateToolbar extends AppCompatActivity {
-    Toolbar toolbar;
     CollapsingToolbarLayout collapsingToolbar;
     RecyclerView recyclerView;
     int mutedColor = R.attr.colorPrimary;
@@ -32,7 +31,7 @@ public class AnimateToolbar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animate_toolbar);
 
-        toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -49,9 +48,10 @@ public class AnimateToolbar extends AppCompatActivity {
             public void onGenerated(Palette palette) {
 
                 mutedColor = palette.getMutedColor(R.attr.colorPrimary);
-                collapsingToolbar.setContentScrimColor(mutedColor);
+//                collapsingToolbar.setContentScrimColor(mutedColor);
             }
         });
+
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
 
@@ -61,7 +61,7 @@ public class AnimateToolbar extends AppCompatActivity {
 
         List<String> listData = new ArrayList<String>();
         int ct = 0;
-        for (int i = 0; i < VersionModel.data.length * 3; i++) {
+        for (int i = 0; i < VersionModel.data.length * 2; i++) {
             listData.add(VersionModel.data[ct]);
             ct++;
             if (ct == VersionModel.data.length) {
@@ -77,26 +77,21 @@ public class AnimateToolbar extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_animate_toolbar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.action_settings:
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

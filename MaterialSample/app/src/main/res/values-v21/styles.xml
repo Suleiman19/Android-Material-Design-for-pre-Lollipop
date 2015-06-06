@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MyTheme" parent="Base.MyTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
 
-        <item name="android:colorPrimary">@color/primary_500</item>
-        <item name="android:colorPrimaryDark">@color/primary_700</item>
-        <item name="android:colorAccent">@color/accent_500</item>
-
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-
-        <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap">true</item>
-        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
-        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    <style name="MyTheme.Detail" parent="MyTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="MySpinnerStyle" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
@@ -23,11 +15,5 @@
         <item name="android:divider">@null</item>
         <item name="android:overlapAnchor">true</item>
     </style>
-
-    <style name="AppTheme.Transparent" parent="AppTheme">
-
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
-
 
 </resources>

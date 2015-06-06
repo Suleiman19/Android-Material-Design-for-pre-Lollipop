@@ -1,12 +1,14 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="MyTheme" parent="Base.MyTheme"></style>
+
+    <style name="Base.MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary_500</item>
         <item name="colorPrimaryDark">@color/primary_700</item>
         <item name="colorAccent">@color/accent_500</item>
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/background_material_light</item>
     </style>
 
     <style name="MyAppDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -22,5 +24,6 @@
         <item name="overlapAnchor">true</item>
     </style>
 
-    <style name="AppTheme.Transparent" parent="AppTheme"></style>
+    <style name="MyTheme.Detail" parent="MyTheme"></style>
+
 </resources>
