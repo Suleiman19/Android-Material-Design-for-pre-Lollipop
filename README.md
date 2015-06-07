@@ -20,14 +20,16 @@ Transparent and overlaid toolbar. On Lollipop devices, Status Bar is transparent
 
 <b>3) Navigation Drawer</b>
 Material Design styled Navigation Drawer with header image and menu. VERY quick way to get started with such a Drawer swiftly. Made using Design Support Library. Since the NavigationView uses a menu resource to load the list of items, if anyone wants to have a custom list with counters for instance, I'd suggest you use a custom library like the MaterialNavigationDrawer from neokree
-
+![alt tag](http://blog.grafixartist.com/wp-content/uploads/2015/05/navigation-drawer-material-design.gif)
 <b>4) Toolbar Header Animation</b>
 Large header image with on scroll animation for Toolbar. Dynamic Toolbar coloring using Palette class based off the header image. Using the Design Support Library. 
 
-Also includes a Floating Action Button(FAB) Design library widget. See activity_animate_toolbar.xml 
+Also includes a Floating Action Button(FAB) Design library widget. See activity_animate_toolbar.xml
+![alt tag](http://blog.grafixartist.com/wp-content/uploads/2015/06/toolbar-header-animation.gif)
 
 <b>5) Tab Strip </b>
 Material Design Tab strip attached below the Toolbar. Using the Design Support Library, includes on scroll hide and reveal animations.
+![alt tag](http://blog.grafixartist.com/wp-content/uploads/2015/06/tabs-defined-e1433590539228.png)
 
 
 
