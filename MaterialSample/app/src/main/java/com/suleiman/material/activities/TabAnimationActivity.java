@@ -1,5 +1,6 @@
 package com.suleiman.material.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -138,6 +139,7 @@ public class TabAnimationActivity extends AppCompatActivity {
         public DummyFragment() {
         }
 
+        @SuppressLint("ValidFragment")
         public DummyFragment(int color) {
             this.color = color;
         }
