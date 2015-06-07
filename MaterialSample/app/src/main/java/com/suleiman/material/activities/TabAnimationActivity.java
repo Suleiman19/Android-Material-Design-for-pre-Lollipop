@@ -1,6 +1,5 @@
 package com.suleiman.material.activities;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -132,10 +131,12 @@ public class TabAnimationActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("ValidFragment")
     public static class DummyFragment extends Fragment {
         int color;
         SimpleRecyclerAdapter adapter;
+
+        public DummyFragment() {
+        }
 
         public DummyFragment(int color) {
             this.color = color;
@@ -148,7 +149,6 @@ public class TabAnimationActivity extends AppCompatActivity {
             final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.dummyfrag_bg);
             frameLayout.setBackgroundColor(color);
 
-            // Show list only for one fragment
             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.dummyfrag_scrollableview);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
