@@ -48,7 +48,7 @@ public class AnimateToolbar extends AppCompatActivity {
             public void onGenerated(Palette palette) {
 
                 mutedColor = palette.getMutedColor(R.attr.colorPrimary);
-//                collapsingToolbar.setContentScrimColor(mutedColor);
+                collapsingToolbar.setContentScrimColor(mutedColor);
             }
         });
 
