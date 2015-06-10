@@ -67,10 +67,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(MainActivity.this, AnimateToolbar.class);
+                        intent = new Intent(MainActivity.this, MiniDrawerActivity.class);
                         startActivity(intent);
                         break;
                     case 4:
+                        intent = new Intent(MainActivity.this, AnimateToolbar.class);
+                        startActivity(intent);
+                        break;
+                    case 5:
                         intent = new Intent(MainActivity.this, TabAnimationActivity.class);
                         startActivity(intent);
                         break;

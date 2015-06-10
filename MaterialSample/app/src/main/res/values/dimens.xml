@@ -10,4 +10,6 @@
 
     <dimen name="statusbar_size">24dp</dimen>
 
+    <dimen name="minidrawer_size">170dp</dimen>
+
 </resources>

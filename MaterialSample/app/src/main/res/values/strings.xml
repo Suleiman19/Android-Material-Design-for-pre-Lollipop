@@ -8,4 +8,10 @@
     <string name="title_activity_nav_drawer">NavDrawerActivity</string>
     <string name="title_activity_animate_toolbar">Animate Toolbar</string>
     <string name="title_activity_tab_animation">Tabs Animation</string>
+    <string name="title_activity_sticky_view">StickyViewActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_swipe_refresh">Swipe Refresh</string>
+    <string name="title_activity_mini_drawer">Mini Drawer</string>
 </resources>

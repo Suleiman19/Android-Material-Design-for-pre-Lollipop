@@ -33,6 +33,18 @@
             android:name=".activities.TabAnimationActivity"
             android:label="@string/title_activity_tab_animation" >
         </activity>
+        <activity
+            android:name=".activities.StickyViewActivity"
+            android:label="@string/title_activity_sticky_view" >
+        </activity>
+        <activity
+            android:name=".activities.SwipeRefreshActivity"
+            android:label="@string/title_activity_swipe_refresh" >
+        </activity>
+        <activity
+            android:name=".activities.MiniDrawerActivity"
+            android:label="@string/title_activity_mini_drawer" >
+        </activity>
     </application>
 
 </manifest>

@@ -74,7 +74,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     }
 
 
-    public class VersionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class VersionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cardItemLayout;
         TextView title;
         TextView subTitle;
