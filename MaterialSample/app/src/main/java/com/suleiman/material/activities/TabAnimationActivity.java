@@ -46,6 +46,7 @@ public class TabAnimationActivity extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                super.onTabSelected(tab);
                 switch (tab.getPosition()) {
                     case 0:
                         showToast("One");
@@ -63,12 +64,12 @@ public class TabAnimationActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                super.onTabUnselected(tab);
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                super.onTabReselected(tab);
             }
         });
     }
