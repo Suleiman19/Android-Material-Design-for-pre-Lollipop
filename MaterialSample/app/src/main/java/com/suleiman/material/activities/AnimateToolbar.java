@@ -52,7 +52,6 @@ public class AnimateToolbar extends AppCompatActivity {
             }
         });
 
-
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
 
         recyclerView.setHasFixedSize(true);
@@ -72,9 +71,8 @@ public class AnimateToolbar extends AppCompatActivity {
         if (simpleRecyclerAdapter == null) {
             simpleRecyclerAdapter = new SimpleRecyclerAdapter(listData);
             recyclerView.setAdapter(simpleRecyclerAdapter);
-        } else {
-            simpleRecyclerAdapter.notifyDataSetChanged();
         }
+
     }
 
     @Override
