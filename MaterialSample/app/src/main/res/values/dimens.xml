@@ -10,6 +10,8 @@
 
     <dimen name="statusbar_size">24dp</dimen>
 
-    <dimen name="minidrawer_size">170dp</dimen>
+    <dimen name="cardview_toolbar_spacer">16dp</dimen>
+
+    <dimen name="toolbar_double_height">112dp</dimen>
 
 </resources>

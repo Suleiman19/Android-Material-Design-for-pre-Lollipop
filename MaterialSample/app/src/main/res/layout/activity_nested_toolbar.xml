@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_parentframe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material_light"
+    tools:context="com.suleiman.material.activities.NestedToolbarActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nested_toolbar_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_double_height"
+        android:background="?attr/colorPrimary" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/cardview_toolbar_spacer"
+        android:layout_marginLeft="@dimen/cardview_toolbar_spacer"
+        android:layout_marginRight="@dimen/cardview_toolbar_spacer"
+        android:layout_marginStart="@dimen/cardview_toolbar_spacer"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/nested_toolbar_2"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="-4dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.12"
+                android:background="@android:color/black" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

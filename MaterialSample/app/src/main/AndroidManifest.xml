@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.suleiman.material">
+    package="com.suleiman.material" >
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MyTheme">
+        android:theme="@style/MyTheme" >
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,13 +31,15 @@
         <activity
             android:name=".activities.AnimateToolbar"
             android:configChanges="orientation|screenSize"
-
             android:theme="@style/MyTheme.Detail" />
         <activity
             android:name=".activities.TabAnimationActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_tab_animation" />
-
+        <activity
+            android:name=".activities.NestedToolbarActivity"
+            android:label="@string/title_activity_nested_toolbar" >
+        </activity>
     </application>
 
 </manifest>
