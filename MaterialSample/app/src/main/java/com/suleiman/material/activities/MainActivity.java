@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, NestedToolbarActivity.class);
                         startActivity(intent);
                         break;
+                    case 6:
+                        intent = new Intent(MainActivity.this, QuickReturnActivity.class);
+                        startActivity(intent);
+                        break;
+
                     default:
                         Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
                 }

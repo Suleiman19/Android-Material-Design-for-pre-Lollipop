@@ -91,7 +91,7 @@ public class TabAnimationActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_tab_animation, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

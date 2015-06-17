@@ -8,6 +8,7 @@
         <item>Toolbar Animation with Image</item>
         <item>Material Style Tabs</item>
         <item>Card View Toolbar</item>
+        <item>Quick Return Pattern</item>
 
     </string-array>
 
@@ -15,9 +16,10 @@
         <item>G+ like on scroll hide animation</item>
         <item>Overlaid transparent Toolbar</item>
         <item>Material Design drawer with scrim</item>
-        <item>Using the new Support Design library</item>
-        <item>Tab strip with Design support lib</item>
+        <item>Using the new Support Design Library</item>
+        <item>Tab strip with Design Support Lib</item>
         <item>Nested Toolbar in card</item>
+        <item>UI Pattern using Design Support Lib</item>
 
     </string-array>
 

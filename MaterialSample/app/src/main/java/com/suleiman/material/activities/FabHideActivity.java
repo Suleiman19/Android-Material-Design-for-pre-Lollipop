@@ -127,10 +127,7 @@ public class FabHideActivity extends AppCompatActivity {
         if (simpleRecyclerAdapter == null) {
             simpleRecyclerAdapter = new SimpleRecyclerAdapter(listData);
             recyclerView.setAdapter(simpleRecyclerAdapter);
-        } else {
-            simpleRecyclerAdapter.notifyDataSetChanged();
         }
-
 
         recyclerView.addOnScrollListener(new MyRecyclerScroll() {
             @Override

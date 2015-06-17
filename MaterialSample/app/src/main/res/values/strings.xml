@@ -17,4 +17,6 @@
     <string name="title_activity_nested_toolbar">Nested Toolbar</string>
     <string name="action_search">Search</string>
     <string name="action_view_module">View</string>
+    <string name="title_quick_return">Quick Return</string>
+    <string name="title_activity_reveal">Reveal Animation</string>
 </resources>
