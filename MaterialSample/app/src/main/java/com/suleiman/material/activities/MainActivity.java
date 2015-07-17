@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+        toolbar.setTitle("");
 
         mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         listItem = (CardView) findViewById(R.id.cardlist_item);
@@ -82,11 +83,14 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, QuickReturnActivity.class);
                         startActivity(intent);
                         break;
+                    case 7:
+                        intent = new Intent(MainActivity.this, RevealAnimation.class);
+                        startActivity(intent);
+                        break;
 
                     default:
                         Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

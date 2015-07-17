@@ -9,6 +9,7 @@
         <item>Material Style Tabs</item>
         <item>Card View Toolbar</item>
         <item>Quick Return Pattern</item>
+        <item>Reveal Animation</item>
 
     </string-array>
 
@@ -20,6 +21,7 @@
         <item>Tab strip with Design Support Lib</item>
         <item>Nested Toolbar in card</item>
         <item>UI Pattern using Design Support Lib</item>
+        <item>Circular Reveal for pre Lollipop</item>
 
     </string-array>
 

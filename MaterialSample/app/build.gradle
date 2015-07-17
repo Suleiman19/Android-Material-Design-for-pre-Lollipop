@@ -19,6 +19,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.2.0'
@@ -26,5 +32,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
     compile 'com.android.support:palette-v7:22.2.0'
-    compile 'it.sephiroth.android.library.viewrevealanimator:view-reveal-animator:+'
+    compile 'com.github.ozodrukh:CircularReveal:1.1.0'
 }
