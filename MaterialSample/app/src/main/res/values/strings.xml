@@ -20,4 +20,5 @@
     <string name="title_quick_return">Quick Return</string>
     <string name="title_activity_reveal">Reveal Animation</string>
     <string name="title_activity_reveal_animation">Reveal Animation</string>
+    <string name="title_activity_launch_screen">LaunchScreenActivity</string>
 </resources>

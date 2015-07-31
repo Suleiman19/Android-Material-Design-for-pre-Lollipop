@@ -5,7 +5,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.suleiman.material.activities.MainActivity">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar_w_shadow" />
 
     <FrameLayout
         android:layout_width="match_parent"
