@@ -87,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, RevealAnimation.class);
                         startActivity(intent);
                         break;
+                    case 8:
+                        intent = new Intent(MainActivity.this, GmailStyleActivity.class);
+                        startActivity(intent);
+                        break;
 
                     default:
                         Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();

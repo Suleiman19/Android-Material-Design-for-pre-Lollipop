@@ -10,6 +10,8 @@
         <item>Card View Toolbar</item>
         <item>Quick Return Pattern</item>
         <item>Reveal Animation</item>
+        <item>Gmail Style List</item>
+
 
     </string-array>
 
@@ -22,6 +24,7 @@
         <item>Nested Toolbar in card</item>
         <item>UI Pattern using Design Support Lib</item>
         <item>Circular Reveal for pre Lollipop</item>
+        <item>Colored list icons</item>
 
     </string-array>
 
