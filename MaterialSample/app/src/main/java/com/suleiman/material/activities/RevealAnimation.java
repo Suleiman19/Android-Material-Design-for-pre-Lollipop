@@ -1,5 +1,8 @@
 package com.suleiman.material.activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -53,43 +56,67 @@ public class RevealAnimation extends AppCompatActivity {
 
                 int radius = Math.max(mRevealView.getWidth(), mRevealView.getHeight());
 
-                SupportAnimator animator =
-                        ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
-                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                animator.setDuration(800);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 
-                SupportAnimator animator_reverse = animator.reverse();
 
-                if (hidden) {
-                    mRevealView.setVisibility(View.VISIBLE);
-                    animator.start();
-                    hidden = false;
+                    SupportAnimator animator =
+                            ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
+                    animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                    animator.setDuration(800);
+
+                    SupportAnimator animator_reverse = animator.reverse();
+
+                    if (hidden) {
+                        mRevealView.setVisibility(View.VISIBLE);
+                        animator.start();
+                        hidden = false;
+                    } else {
+                        animator_reverse.addListener(new SupportAnimator.AnimatorListener() {
+                            @Override
+                            public void onAnimationStart() {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd() {
+                                mRevealView.setVisibility(View.INVISIBLE);
+                                hidden = true;
+
+                            }
+
+                            @Override
+                            public void onAnimationCancel() {
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat() {
+
+                            }
+                        });
+                        animator_reverse.start();
+
+                    }
                 } else {
-                    animator_reverse.addListener(new SupportAnimator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart() {
+                    if (hidden) {
+                        Animator anim = android.view.ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
+                        mRevealView.setVisibility(View.VISIBLE);
+                        anim.start();
+                        hidden = false;
 
-                        }
+                    } else {
+                        Animator anim = android.view.ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, radius, 0);
+                        anim.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mRevealView.setVisibility(View.INVISIBLE);
+                                hidden = true;
+                            }
+                        });
+                        anim.start();
 
-                        @Override
-                        public void onAnimationEnd() {
-                            mRevealView.setVisibility(View.INVISIBLE);
-                            hidden = true;
-
-                        }
-
-                        @Override
-                        public void onAnimationCancel() {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat() {
-
-                        }
-                    });
-                    animator_reverse.start();
-
+                    }
                 }
 
                 return true;
