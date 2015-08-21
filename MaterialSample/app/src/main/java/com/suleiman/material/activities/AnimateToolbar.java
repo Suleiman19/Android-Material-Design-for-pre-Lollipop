@@ -44,11 +44,13 @@ public class AnimateToolbar extends AppCompatActivity {
                 R.drawable.header);
 
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @SuppressWarnings("ResourceType")
             @Override
             public void onGenerated(Palette palette) {
 
-                mutedColor = palette.getMutedColor(R.attr.colorPrimary);
+                mutedColor = palette.getMutedColor(R.color.primary_500);
                 collapsingToolbar.setContentScrimColor(mutedColor);
+                collapsingToolbar.setStatusBarScrimColor(palette.getDarkMutedColor(R.color.primary_700));
             }
         });
 
