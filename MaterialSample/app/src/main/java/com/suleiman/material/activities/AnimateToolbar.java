@@ -2,6 +2,7 @@ package com.suleiman.material.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
+import com.suleiman.material.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class AnimateToolbar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_animate_toolbar);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
@@ -50,7 +54,7 @@ public class AnimateToolbar extends AppCompatActivity {
 
                 mutedColor = palette.getMutedColor(R.color.primary_500);
                 collapsingToolbar.setContentScrimColor(mutedColor);
-                collapsingToolbar.setStatusBarScrimColor(palette.getDarkMutedColor(R.color.primary_700));
+                collapsingToolbar.setStatusBarScrimColor(R.color.black_trans80);
             }
         });
 
