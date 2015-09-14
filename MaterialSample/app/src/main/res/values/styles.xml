@@ -25,6 +25,10 @@
         <item name="overlapAnchor">true</item>
     </style>
 
+    <style name="CollapsedTitleSpaceFix" parent="Base.TextAppearance.AppCompat.Title">
+        <item name="android:layout_marginTop">23dp</item>
+    </style>
+
     <style name="MyTheme.Detail" parent="MyTheme"></style>
 
 </resources>
