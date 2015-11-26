@@ -9,7 +9,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowActionBarOverlay">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/background_material_light</item>
+        <item name="android:windowBackground">@color/bg_light</item>
     </style>
 
     <style name="MyAppDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -31,4 +31,5 @@
 
     <style name="MyTheme.Detail" parent="MyTheme"></style>
 
+    <color name="bg_light">#FAFAFA</color>
 </resources>

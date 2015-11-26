@@ -5,8 +5,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.suleiman.material.activities.MainActivity">
 
-    <include layout="@layout/toolbar_w_shadow" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,5 +17,8 @@
             android:clipToPadding="false" />
 
     </FrameLayout>
+
+    <include layout="@layout/toolbar_w_shadow" />
+
 
 </FrameLayout>
