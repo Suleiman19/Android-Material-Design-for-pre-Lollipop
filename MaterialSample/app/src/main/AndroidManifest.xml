@@ -56,6 +56,9 @@
             android:name=".activities.TabsHeaderActivity"
             android:label="@string/title_activity_tabs_header"
             android:theme="@style/MyTheme.Detail" />
+        <activity
+            android:name=".activities.PagerActivity"
+            android:theme="@style/MyTheme.Detail" />
     </application>
 
 </manifest>

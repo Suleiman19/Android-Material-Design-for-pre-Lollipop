@@ -11,6 +11,8 @@
     <color name="accent_700">#C2185B</color>
     <color name="black_trans80">#14000000</color>
 
+    <color name="indicator_unselected">#4D000000</color>
+
 
     <color name="blue_grey">#455A64</color>
     <color name="red">#F44336</color>
@@ -29,12 +31,6 @@
     <color name="amber">#FFC107</color>
     <color name="orange">#FF9800</color>
     <color name="deep_orange">#FF5722</color>
-
-
-
-
-
-
 
 
 </resources>

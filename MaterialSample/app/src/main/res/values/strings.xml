@@ -10,7 +10,7 @@
     <string name="title_activity_tab_animation">Tabs Animation</string>
     <string name="title_activity_sticky_view">StickyViewActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_swipe_refresh">Swipe Refresh</string>
     <string name="title_activity_mini_drawer">Mini Drawer</string>
@@ -23,4 +23,6 @@
     <string name="title_activity_launch_screen">LaunchScreenActivity</string>
     <string name="title_activity_gmail_style">Gmail List</string>
     <string name="title_activity_tabs_header">Header Tabs</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="section_format">Page %1$d</string>
 </resources>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
+import com.suleiman.material.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -25,16 +26,40 @@ public class MainActivity extends AppCompatActivity {
     CardView listItem;
     Intent intent;
 
+    public static final String PREF_USER_FIRST_TIME = "user_first_time";
+    boolean isUserFirstTime;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
+
+        Intent introIntent = new Intent(MainActivity.this, PagerActivity.class);
+        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+
+        if (isUserFirstTime) {
+
+            startActivity(introIntent);
+
+        }
+
+
         setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_elevated);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
-        toolbar.setTitle("");
+        getSupportActionBar().setTitle("Material Design Samples");
 
         mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         listItem = (CardView) findViewById(R.id.cardlist_item);
@@ -57,44 +82,41 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         intent = new Intent(MainActivity.this, FabHideActivity.class);
-                        startActivity(intent);
                         break;
                     case 1:
                         intent = new Intent(MainActivity.this, ToolbarOverlayActivity.class);
-                        startActivity(intent);
                         break;
                     case 2:
                         intent = new Intent(MainActivity.this, NavDrawerActivity.class);
-                        startActivity(intent);
                         break;
                     case 3:
                         intent = new Intent(MainActivity.this, AnimateToolbar.class);
-                        startActivity(intent);
                         break;
                     case 4:
                         intent = new Intent(MainActivity.this, TabAnimationActivity.class);
-                        startActivity(intent);
                         break;
                     case 5:
                         intent = new Intent(MainActivity.this, NestedToolbarActivity.class);
-                        startActivity(intent);
                         break;
                     case 6:
                         intent = new Intent(MainActivity.this, QuickReturnActivity.class);
-                        startActivity(intent);
                         break;
                     case 7:
                         intent = new Intent(MainActivity.this, RevealAnimation.class);
-                        startActivity(intent);
                         break;
                     case 8:
                         intent = new Intent(MainActivity.this, GmailStyleActivity.class);
-                        startActivity(intent);
+                        break;
+                    case 9:
+                        intent = new Intent(MainActivity.this, PagerActivity.class);
                         break;
 
                     default:
                         Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
                 }
+
+                if (intent != null)
+                    startActivity(intent);
             }
         });
 

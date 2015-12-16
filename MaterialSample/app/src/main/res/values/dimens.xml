@@ -13,5 +13,7 @@
     <dimen name="cardview_toolbar_spacer">16dp</dimen>
 
     <dimen name="toolbar_double_height">112dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="activity_margin_half">8dp</dimen>
 
 </resources>

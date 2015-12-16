@@ -32,4 +32,8 @@
     <style name="MyTheme.Detail" parent="MyTheme"></style>
 
     <color name="bg_light">#FAFAFA</color>
+
+    <style name="MyTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
