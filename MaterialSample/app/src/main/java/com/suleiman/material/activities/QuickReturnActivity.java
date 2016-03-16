@@ -18,6 +18,9 @@ import java.util.List;
 
 /**
  * Created by Suleiman on 15-06-2015.
+ *
+ * Simple Quick Return implementation using Design Support Library.
+ * Added Bottom Sheet
  */
 public class QuickReturnActivity extends AppCompatActivity {
     RecyclerView recyclerView;
