@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.suleiman.material"
@@ -37,6 +37,5 @@ dependencies {
     compile 'com.android.support:palette-v7:23.2.1'
     compile 'com.github.ozodrukh:CircularReveal:1.1.0'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    compile 'com.roughike:bottom-bar:1.1.7'
 
 }
