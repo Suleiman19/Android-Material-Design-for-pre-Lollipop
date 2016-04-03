@@ -2,9 +2,11 @@ package com.suleiman.material.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnMenuTabSelectedListener;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.utils.Utils;
@@ -22,12 +26,14 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     SimpleRecyclerAdapter adapter;
-    RecyclerView mainRecyclerView;
-    CardView listItem;
     Intent intent;
+
+    String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     boolean isUserFirstTime;
+
+    BottomBar bottomBar;
 
     @Override
     protected void onStart() {
@@ -46,11 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Intent introIntent = new Intent(MainActivity.this, PagerActivity.class);
         introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
 
-        if (isUserFirstTime) {
-
+        if (isUserFirstTime)
             startActivity(introIntent);
-
-        }
 
 
         setContentView(R.layout.activity_main);
@@ -61,13 +64,12 @@ public class MainActivity extends AppCompatActivity {
         }
         getSupportActionBar().setTitle("Material Design Samples");
 
-        mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        listItem = (CardView) findViewById(R.id.cardlist_item);
-        recyclerView = (RecyclerView) findViewById(R.id.home_recyclerview);
 
-        recyclerView.setHasFixedSize(true);
+        recyclerView = (RecyclerView) findViewById(R.id.main_recycler);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
 
         if (adapter == null) {
             adapter = new SimpleRecyclerAdapter(this);
@@ -117,6 +119,40 @@ public class MainActivity extends AppCompatActivity {
 
                 if (intent != null)
                     startActivity(intent);
+            }
+        });
+
+
+
+        //  Attaching Bottom Bar
+//        bottomBar = BottomBar.attach(this, savedInstanceState);
+
+        //  Attach Bottom Bar and enable Quick Return
+        bottomBar = BottomBar.attachShy((CoordinatorLayout) findViewById(R.id.main_coordinator),
+                recyclerView, savedInstanceState);
+        bottomBar.noNavBarGoodness();
+
+        //  Customizations
+        for (int i = 0; i < colors.length; i++)
+            bottomBar.mapColorForTab(i, colors[i]);
+
+        bottomBar.setActiveTabColor(ContextCompat.getColor(this, R.color.white));
+
+
+        bottomBar.setItemsFromMenu(R.menu.bottom_bar, new OnMenuTabSelectedListener() {
+            @Override
+            public void onMenuItemSelected(int resId) {
+                switch (resId) {
+                    case R.id.bottombaritem_0:
+                        recyclerView.setBackgroundColor(Color.parseColor(colors[0]));
+                        break;
+                    case R.id.bottombaritem_1:
+                        recyclerView.setBackgroundColor(Color.parseColor(colors[1]));
+                        break;
+                    case R.id.bottombaritem_2:
+                        recyclerView.setBackgroundColor(Color.parseColor(colors[2]));
+                        break;
+                }
             }
         });
 

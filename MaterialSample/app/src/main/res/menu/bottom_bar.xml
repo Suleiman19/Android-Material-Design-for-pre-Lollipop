@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottombaritem_0"
+        android:icon="@drawable/ic_call_24dp"
+        android:title="Recents" />
+
+
+    <item
+        android:id="@+id/bottombaritem_1"
+        android:icon="@drawable/ic_query_builder_24dp"
+        android:title="Recents" />
+
+    <item
+        android:id="@+id/bottombaritem_2"
+        android:icon="@drawable/ic_flight_24dp"
+        android:title="Recents" />
+
+
+</menu>
