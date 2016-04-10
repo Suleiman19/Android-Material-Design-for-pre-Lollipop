@@ -35,5 +35,12 @@ Material Design Tab strip attached below the Toolbar. Using the Design Support L
 
 ![alt tag](http://blog.grafixartist.com/wp-content/uploads/2015/06/tabs-defined-e1433590539228.png)
 
+<b>6) Cardview Toolbar (Nested Toolbar)</b>
+
+<b>7) Bottom Sheets along with Gmail app style lists</b>
+
+<b>8) Reveal Animation (WhatsApp attach button animation) pre Lollipop compatible</b>
+
+<b>9) Onboarding with ViewPager (Google style)</b>
 
 
