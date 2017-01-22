@@ -8,16 +8,18 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     Toolbar toolbar;
     RecyclerView recyclerView;
     SimpleRecyclerAdapter adapter;
@@ -105,9 +107,13 @@ public class MainActivity extends AppCompatActivity {
                     case 9:
                         intent = new Intent(MainActivity.this, PagerActivity.class);
                         break;
+                    case 10:
+                        intent = new Intent(MainActivity.this, BottomBarActivity.class);
+                        break;
 
                     default:
-                        Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
+                        Log.w(TAG, "onItemClick: Undefined Click!");
+//                        Toast.makeText(getBaseContext(), "Undefined Click!", Toast.LENGTH_SHORT).show();
                 }
 
                 if (intent != null)

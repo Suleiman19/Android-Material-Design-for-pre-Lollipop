@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_bottombar_calls"
+        android:icon="@drawable/ic_call_24dp"
+        android:title="Calls"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_bottombar_recents"
+        android:icon="@drawable/ic_query_builder_24dp"
+        android:title="Recents"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_bottombar_trips"
+        android:icon="@drawable/ic_flight_24dp"
+        android:title="Trips"
+        app:showAsAction="ifRoom"/>
+</menu>

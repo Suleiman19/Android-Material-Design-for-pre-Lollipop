@@ -12,6 +12,7 @@
         <item>Reveal Animation</item>
         <item>Gmail Style List with Bottom Sheet</item>
         <item>Introductory View Pager</item>
+        <item>Bottom Navigation Bar</item>
 
 
     </string-array>
@@ -27,6 +28,7 @@
         <item>Circular Reveal for pre Lollipop</item>
         <item>Colored list icons with Bottom Sheets Google Maps style</item>
         <item>Google style product tour</item>
+        <item>Using Design Support Library\'s BottomNavigationView</item>
 
     </string-array>
 
