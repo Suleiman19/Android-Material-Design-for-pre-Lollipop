@@ -29,7 +29,7 @@ repositories {
 }
 
 ext {
-    supportLibVersion = "25.1.0"
+    supportLibVersion = "25.1.1"
 }
 
 dependencies {
@@ -42,5 +42,4 @@ dependencies {
     compile 'com.github.ozodrukh:CircularReveal:1.1.0'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.schibsted.spain:parallax-layer-layout:1.0.0'
-    compile 'com.android.support:support-v4:25.1.0'
 }

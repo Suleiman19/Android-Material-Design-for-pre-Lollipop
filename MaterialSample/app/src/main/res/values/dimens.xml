@@ -15,5 +15,6 @@
     <dimen name="toolbar_double_height">112dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="activity_margin_half">8dp</dimen>
+    <dimen name="activity_margin_content">24dp</dimen>
 
 </resources>

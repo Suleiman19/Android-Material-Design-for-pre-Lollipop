@@ -2,32 +2,37 @@ package com.suleiman.material.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
-import com.suleiman.material.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimateToolbar extends AppCompatActivity {
-    CollapsingToolbarLayout collapsingToolbar;
-    RecyclerView recyclerView;
-    int mutedColor = R.attr.colorPrimary;
-    SimpleRecyclerAdapter simpleRecyclerAdapter;
+
+    private CollapsingToolbarLayout collapsingToolbar;
+    private AppBarLayout appBarLayout;
+    private RecyclerView recyclerView;
+
+    private SimpleRecyclerAdapter simpleRecyclerAdapter;
+
+    private Menu collapsedMenu;
+    private boolean appBarExpanded = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,10 @@ public class AnimateToolbar extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Suleiman Ali Shakir");
-
-        ImageView header = (ImageView) findViewById(R.id.header);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.header);
@@ -51,9 +56,8 @@ public class AnimateToolbar extends AppCompatActivity {
             @SuppressWarnings("ResourceType")
             @Override
             public void onGenerated(Palette palette) {
-
-                mutedColor = palette.getMutedColor(R.color.primary_500);
-                collapsingToolbar.setContentScrimColor(mutedColor);
+                int vibrantColor = palette.getVibrantColor(R.color.primary_500);
+                collapsingToolbar.setContentScrimColor(vibrantColor);
                 collapsingToolbar.setStatusBarScrimColor(R.color.black_trans80);
             }
         });
@@ -64,6 +68,7 @@ public class AnimateToolbar extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        // Create fake list data
         List<String> listData = new ArrayList<String>();
         int ct = 0;
         for (int i = 0; i < VersionModel.data.length * 2; i++) {
@@ -79,11 +84,46 @@ public class AnimateToolbar extends AppCompatActivity {
             recyclerView.setAdapter(simpleRecyclerAdapter);
         }
 
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                Log.d(AnimateToolbar.class.getSimpleName(), "onOffsetChanged: verticalOffset: " + verticalOffset);
+
+                //  Vertical offset == 0 indicates appBar is fully expanded.
+                if (Math.abs(verticalOffset) > 120) {
+                    appBarExpanded = false;
+                    invalidateOptionsMenu();
+                } else {
+                    appBarExpanded = true;
+                    invalidateOptionsMenu();
+                }
+
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        if (!appBarExpanded || collapsedMenu.size() != 1) {
+            //collapsed
+            collapsedMenu.add("Add")
+                    .setIcon(R.drawable.ic_action_add)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        } else {
+            //expanded
+
+
+        }
+
+        return super.onPrepareOptionsMenu(collapsedMenu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        collapsedMenu = menu;
         return true;
     }
 
@@ -96,6 +136,11 @@ public class AnimateToolbar extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
         }
+
+        if (item.getTitle() == "Add") {
+            Toast.makeText(this, "clicked add", Toast.LENGTH_SHORT).show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
