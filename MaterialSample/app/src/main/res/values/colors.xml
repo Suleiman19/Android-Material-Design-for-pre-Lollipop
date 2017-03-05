@@ -9,7 +9,7 @@
     <color name="accent_500">#E91E63</color>
     <!--Pink 700-->
     <color name="accent_700">#C2185B</color>
-    <color name="black_trans80">#14000000</color>
+    <color name="black_trans80">#33000000</color>
 
     <color name="indicator_unselected">#4D000000</color>
 
