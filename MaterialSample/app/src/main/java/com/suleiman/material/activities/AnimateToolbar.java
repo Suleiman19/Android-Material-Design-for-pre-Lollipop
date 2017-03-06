@@ -16,11 +16,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.suleiman.material.R;
-import com.suleiman.material.adapter.SimpleRecyclerAdapter;
-import com.suleiman.material.model.VersionModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.suleiman.material.adapter.DessertAdapter;
 
 public class AnimateToolbar extends AppCompatActivity {
 
@@ -28,7 +24,7 @@ public class AnimateToolbar extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private RecyclerView recyclerView;
 
-    private SimpleRecyclerAdapter simpleRecyclerAdapter;
+    private DessertAdapter dessertAdapter;
 
     private Menu collapsedMenu;
     private boolean appBarExpanded = true;
@@ -42,12 +38,13 @@ public class AnimateToolbar extends AppCompatActivity {
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("Suleiman Ali Shakir");
+        collapsingToolbar.setTitle(getString(R.string.android_desserts));
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.header);
@@ -64,25 +61,14 @@ public class AnimateToolbar extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
 
+        //  Use when your list size is constant for better performance
         recyclerView.setHasFixedSize(true);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        // Create fake list data
-        List<String> listData = new ArrayList<String>();
-        int ct = 0;
-        for (int i = 0; i < VersionModel.data.length * 2; i++) {
-            listData.add(VersionModel.data[ct]);
-            ct++;
-            if (ct == VersionModel.data.length) {
-                ct = 0;
-            }
-        }
-
-        if (simpleRecyclerAdapter == null) {
-            simpleRecyclerAdapter = new SimpleRecyclerAdapter(listData);
-            recyclerView.setAdapter(simpleRecyclerAdapter);
-        }
+        dessertAdapter = new DessertAdapter(this);
+        recyclerView.setAdapter(dessertAdapter);
 
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -106,7 +92,8 @@ public class AnimateToolbar extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        if (!appBarExpanded || collapsedMenu.size() != 1) {
+        if (collapsedMenu != null
+                && (!appBarExpanded || collapsedMenu.size() != 1)) {
             //collapsed
             collapsedMenu.add("Add")
                     .setIcon(R.drawable.ic_action_add)

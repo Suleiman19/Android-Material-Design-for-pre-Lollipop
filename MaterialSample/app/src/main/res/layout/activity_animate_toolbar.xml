@@ -18,8 +18,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginStart="@dimen/activity_margin_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
@@ -30,6 +29,12 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/scrim"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/anim_toolbar"
@@ -57,6 +62,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"
         android:src="@drawable/ic_action_add"
+        app:backgroundTint="#279AF1"
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="bottom|right|end"/>
 

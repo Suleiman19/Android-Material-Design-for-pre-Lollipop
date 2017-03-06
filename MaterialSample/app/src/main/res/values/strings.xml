@@ -26,4 +26,5 @@
     <string name="title_activity_pager">PagerActivity</string>
     <string name="section_format">Page %1$d</string>
     <string name="action_add">Add</string>
+    <string name="android_desserts">Android Desserts</string>
 </resources>
