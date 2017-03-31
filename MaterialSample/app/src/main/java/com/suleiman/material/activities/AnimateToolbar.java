@@ -29,7 +29,6 @@ public class AnimateToolbar extends AppCompatActivity {
     private Menu collapsedMenu;
     private boolean appBarExpanded = true;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +59,6 @@ public class AnimateToolbar extends AppCompatActivity {
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
-
         //  Use when your list size is constant for better performance
         recyclerView.setHasFixedSize(true);
 
@@ -76,14 +74,13 @@ public class AnimateToolbar extends AppCompatActivity {
                 Log.d(AnimateToolbar.class.getSimpleName(), "onOffsetChanged: verticalOffset: " + verticalOffset);
 
                 //  Vertical offset == 0 indicates appBar is fully expanded.
-                if (Math.abs(verticalOffset) > 120) {
+                if (Math.abs(verticalOffset) > 200) {
                     appBarExpanded = false;
                     invalidateOptionsMenu();
                 } else {
                     appBarExpanded = true;
                     invalidateOptionsMenu();
                 }
-
             }
         });
 
@@ -91,7 +88,6 @@ public class AnimateToolbar extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-
         if (collapsedMenu != null
                 && (!appBarExpanded || collapsedMenu.size() != 1)) {
             //collapsed
@@ -100,10 +96,7 @@ public class AnimateToolbar extends AppCompatActivity {
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         } else {
             //expanded
-
-
         }
-
         return super.onPrepareOptionsMenu(collapsedMenu);
     }
 
@@ -123,7 +116,6 @@ public class AnimateToolbar extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
         }
-
         if (item.getTitle() == "Add") {
             Toast.makeText(this, "clicked add", Toast.LENGTH_SHORT).show();
         }
