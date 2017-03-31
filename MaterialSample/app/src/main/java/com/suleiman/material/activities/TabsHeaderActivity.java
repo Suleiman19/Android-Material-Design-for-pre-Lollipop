@@ -23,7 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.DessertAdapter;
@@ -52,7 +51,6 @@ public class TabsHeaderActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
-        collapsingToolbarLayout.setTitleEnabled(false);
 
         try {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.header);
@@ -84,16 +82,11 @@ public class TabsHeaderActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager.setCurrentItem(tab.getPosition());
+                Log.d(TAG, "onTabSelected: pos: " + tab.getPosition());
 
                 switch (tab.getPosition()) {
                     case 0:
-                        showToast("One");
-                        break;
-                    case 1:
-                        showToast("Two");
-                        break;
-                    case 2:
-                        showToast("Three");
+                        // TODO: 31/03/17
                         break;
                 }
             }
@@ -108,11 +101,6 @@ public class TabsHeaderActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-
-    void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void setupViewPager(ViewPager viewPager) {

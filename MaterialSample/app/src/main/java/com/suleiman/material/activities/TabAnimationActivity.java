@@ -26,7 +26,6 @@ import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TabAnimationActivity extends AppCompatActivity {
@@ -167,7 +166,9 @@ public class TabAnimationActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
 
             List<String> list = new ArrayList<String>();
-            Collections.addAll(list, VersionModel.data);
+            for (int i = 0; i < VersionModel.data.length; i++) {
+                list.add(VersionModel.data[i]);
+            }
 
             adapter = new SimpleRecyclerAdapter(list);
             recyclerView.setAdapter(adapter);
