@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TabAnimationActivity extends AppCompatActivity {
@@ -36,7 +38,7 @@ public class TabAnimationActivity extends AppCompatActivity {
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.tabanim_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
         setupViewPager(viewPager);
@@ -44,7 +46,7 @@ public class TabAnimationActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
@@ -56,11 +58,9 @@ public class TabAnimationActivity extends AppCompatActivity {
                         break;
                     case 1:
                         showToast("Two");
-
                         break;
                     case 2:
                         showToast("Three");
-
                         break;
                 }
             }
@@ -83,9 +83,12 @@ public class TabAnimationActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), "CAT");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.ripple_material_light)), "DOG");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.button_material_dark)), "MOUSE");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.blue_grey)), "CAT");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.amber)), "DOG");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.cyan)), "MOUSE");
         viewPager.setAdapter(adapter);
     }
 
@@ -109,7 +112,7 @@ public class TabAnimationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    static class ViewPagerAdapter extends FragmentPagerAdapter {
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -164,9 +167,7 @@ public class TabAnimationActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
 
             List<String> list = new ArrayList<String>();
-            for (int i = 0; i < VersionModel.data.length; i++) {
-                list.add(VersionModel.data[i]);
-            }
+            Collections.addAll(list, VersionModel.data);
 
             adapter = new SimpleRecyclerAdapter(list);
             recyclerView.setAdapter(adapter);

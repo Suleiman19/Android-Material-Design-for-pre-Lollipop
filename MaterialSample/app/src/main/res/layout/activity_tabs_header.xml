@@ -32,22 +32,30 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:background="@android:color/black"
+                android:fitsSystemWindows="true"/>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/htab_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="104dp"
-                android:gravity="top"
-                android:minHeight="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="top"
+                android:layout_marginBottom="48dp"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:titleMarginTop="13dp"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/htab_tabs"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:tabIndicatorColor="@android:color/white"/>
+                app:tabIndicatorColor="@android:color/white"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="@color/white_70"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

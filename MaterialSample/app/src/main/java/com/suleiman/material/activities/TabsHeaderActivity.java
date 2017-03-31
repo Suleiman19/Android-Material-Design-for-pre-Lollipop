@@ -9,29 +9,30 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.suleiman.material.R;
-import com.suleiman.material.adapter.SimpleRecyclerAdapter;
-import com.suleiman.material.model.VersionModel;
+import com.suleiman.material.adapter.DessertAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TabsHeaderActivity extends AppCompatActivity {
+    private static final String TAG = TabsHeaderActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class TabsHeaderActivity extends AppCompatActivity {
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.htab_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Parallax Tabs");
+        if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.htab_viewpager);
@@ -53,24 +54,32 @@ public class TabsHeaderActivity extends AppCompatActivity {
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
         collapsingToolbarLayout.setTitleEnabled(false);
 
-        ImageView header = (ImageView) findViewById(R.id.header);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.header);
+            Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                @SuppressWarnings("ResourceType")
+                @Override
+                public void onGenerated(Palette palette) {
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
-                R.drawable.header);
+                    int vibrantColor = palette.getVibrantColor(R.color.primary_500);
+                    int vibrantDarkColor = palette.getDarkVibrantColor(R.color.primary_700);
+                    collapsingToolbarLayout.setContentScrimColor(vibrantColor);
+                    collapsingToolbarLayout.setStatusBarScrimColor(vibrantDarkColor);
+                }
+            });
 
-        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-            @SuppressWarnings("ResourceType")
-            @Override
-            public void onGenerated(Palette palette) {
+        } catch (Exception e) {
+            // if Bitmap fetch fails, fallback to primary colors
+            Log.e(TAG, "onCreate: failed to create bitmap from background", e.fillInStackTrace());
+            collapsingToolbarLayout.setContentScrimColor(
+                    ContextCompat.getColor(this, R.color.primary_500)
+            );
+            collapsingToolbarLayout.setStatusBarScrimColor(
+                    ContextCompat.getColor(this, R.color.primary_700)
+            );
+        }
 
-                int vibrantColor = palette.getVibrantColor(R.color.primary_500);
-                int vibrantDarkColor = palette.getDarkVibrantColor(R.color.primary_700);
-                collapsingToolbarLayout.setContentScrimColor(vibrantColor);
-                collapsingToolbarLayout.setStatusBarScrimColor(vibrantDarkColor);
-            }
-        });
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
@@ -82,11 +91,9 @@ public class TabsHeaderActivity extends AppCompatActivity {
                         break;
                     case 1:
                         showToast("Two");
-
                         break;
                     case 2:
                         showToast("Three");
-
                         break;
                 }
             }
@@ -110,9 +117,12 @@ public class TabsHeaderActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), "CAT");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.ripple_material_light)), "DOG");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.button_material_dark)), "MOUSE");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.cyan_50)), "Cyan");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.amber_50)), "Amber");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.purple_50)), "Purple");
         viewPager.setAdapter(adapter);
     }
 
@@ -135,7 +145,7 @@ public class TabsHeaderActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    static class ViewPagerAdapter extends FragmentPagerAdapter {
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -166,7 +176,6 @@ public class TabsHeaderActivity extends AppCompatActivity {
 
     public static class DummyFragment extends Fragment {
         int color;
-        SimpleRecyclerAdapter adapter;
 
         public DummyFragment() {
         }
@@ -189,12 +198,7 @@ public class TabsHeaderActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setHasFixedSize(true);
 
-            List<String> list = new ArrayList<String>();
-            for (int i = 0; i < VersionModel.data.length; i++) {
-                list.add(VersionModel.data[i]);
-            }
-
-            adapter = new SimpleRecyclerAdapter(list);
+            DessertAdapter adapter = new DessertAdapter(getContext());
             recyclerView.setAdapter(adapter);
 
             return view;
