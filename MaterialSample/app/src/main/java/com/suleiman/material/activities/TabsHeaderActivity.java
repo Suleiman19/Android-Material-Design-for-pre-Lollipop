@@ -4,32 +4,33 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 public class TabsHeaderActivity extends AppCompatActivity {
 
@@ -38,22 +39,20 @@ public class TabsHeaderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs_header);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.htab_toolbar);
+        final Toolbar toolbar = findViewById(R.id.htab_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Parallax Tabs");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.htab_viewpager);
+        final ViewPager viewPager = findViewById(R.id.htab_viewpager);
         setupViewPager(viewPager);
 
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.htab_tabs);
+        TabLayout tabLayout = findViewById(R.id.htab_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
+        final CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.htab_collapse_toolbar);
         collapsingToolbarLayout.setTitleEnabled(false);
-
-        ImageView header = (ImageView) findViewById(R.id.header);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.header);
@@ -70,7 +69,7 @@ public class TabsHeaderActivity extends AppCompatActivity {
             }
         });
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
@@ -82,23 +81,19 @@ public class TabsHeaderActivity extends AppCompatActivity {
                         break;
                     case 1:
                         showToast("Two");
-
                         break;
                     case 2:
                         showToast("Three");
-
                         break;
                 }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
     }
@@ -109,7 +104,7 @@ public class TabsHeaderActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), "CAT");
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.ripple_material_light)), "DOG");
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.button_material_dark)), "MOUSE");
@@ -139,9 +134,10 @@ public class TabsHeaderActivity extends AppCompatActivity {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
+        public ViewPagerAdapter(FragmentManager fm, int behavior) {
+            super(fm, behavior);
         }
+
 
         @Override
         public Fragment getItem(int position) {
@@ -180,19 +176,21 @@ public class TabsHeaderActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.dummy_fragment, container, false);
 
-            final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.dummyfrag_bg);
+            final FrameLayout frameLayout = view.findViewById(R.id.dummyfrag_bg);
             frameLayout.setBackgroundColor(color);
 
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.dummyfrag_scrollableview);
+            RecyclerView recyclerView = view.findViewById(R.id.dummyfrag_scrollableview);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setHasFixedSize(true);
 
-            List<String> list = new ArrayList<String>();
-            for (int i = 0; i < VersionModel.data.length; i++) {
-                list.add(VersionModel.data[i]);
-            }
+//            List<String> list = new ArrayList<>();
+//            list.addAll(Arrays.asList(VersionModel.data));
+//            for (int i = 0; i < VersionModel.data.length; i++) {
+//                list.add(VersionModel.data[i]);
+//            }
+            List<String> list = Arrays.asList(VersionModel.data);
 
             adapter = new SimpleRecyclerAdapter(list);
             recyclerView.setAdapter(adapter);

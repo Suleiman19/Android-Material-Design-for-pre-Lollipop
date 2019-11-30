@@ -1,6 +1,7 @@
 package com.suleiman.material.utils;
 
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Suleiman on 18-04-2015.

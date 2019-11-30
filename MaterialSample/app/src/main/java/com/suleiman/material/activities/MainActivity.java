@@ -1,13 +1,7 @@
 package com.suleiman.material.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +11,12 @@ import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.utils.Utils;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     SimpleRecyclerAdapter adapter;
     Intent intent;
 
-    String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     boolean isUserFirstTime;
@@ -53,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_elevated);
+        toolbar = findViewById(R.id.toolbar_elevated);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
         getSupportActionBar().setTitle("Material Design Samples");
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.main_recycler);
+        recyclerView = findViewById(R.id.main_recycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         }
 
-        final Context context = this;
 
         adapter.SetOnItemClickListener(new SimpleRecyclerAdapter.OnItemClickListener() {
             @Override

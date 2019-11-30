@@ -4,8 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +12,8 @@ import android.widget.LinearLayout;
 
 import com.suleiman.material.R;
 
-import io.codetail.animation.SupportAnimator;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import io.codetail.animation.ViewAnimationUtils;
 
 public class RevealAnimation extends AppCompatActivity {
@@ -27,10 +26,10 @@ public class RevealAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reveal_animation);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        mRevealView = (LinearLayout) findViewById(R.id.reveal_items);
+        mRevealView = findViewById(R.id.reveal_items);
         mRevealView.setVisibility(View.INVISIBLE);
         // Getting view's center
 
@@ -58,44 +57,16 @@ public class RevealAnimation extends AppCompatActivity {
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 
-
-                    SupportAnimator animator =
+                    Animator animator =
                             ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
                     animator.setInterpolator(new AccelerateDecelerateInterpolator());
                     animator.setDuration(800);
-
-                    SupportAnimator animator_reverse = animator.reverse();
+//                    Animator animator_reverse = animator.reverse();
 
                     if (hidden) {
-                        mRevealView.setVisibility(View.VISIBLE);
-                        animator.start();
-                        hidden = false;
+                        enterReveal(mRevealView, cx, cy, radius);
                     } else {
-                        animator_reverse.addListener(new SupportAnimator.AnimatorListener() {
-                            @Override
-                            public void onAnimationStart() {
-
-                            }
-
-                            @Override
-                            public void onAnimationEnd() {
-                                mRevealView.setVisibility(View.INVISIBLE);
-                                hidden = true;
-
-                            }
-
-                            @Override
-                            public void onAnimationCancel() {
-
-                            }
-
-                            @Override
-                            public void onAnimationRepeat() {
-
-                            }
-                        });
-                        animator_reverse.start();
-
+                        exitReveal(mRevealView, cx, cy, radius);
                     }
                 } else {
                     if (hidden) {
@@ -127,5 +98,30 @@ public class RevealAnimation extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void enterReveal(final View revealView, int cx, int cy, int radius) {
+        Animator animator =
+                ViewAnimationUtils.createCircularReveal(revealView, cx, cy, radius, 0);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setDuration(800);
+        animator.start();
+        hidden = false;
+    }
+
+    private void exitReveal(final View revealView, int cx, int cy, int radius) {
+        Animator animator =
+                ViewAnimationUtils.createCircularReveal(revealView, cx, cy, 0, radius);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setDuration(800);
+
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                revealView.setVisibility(View.INVISIBLE);
+                hidden = true;
+            }
+        });
     }
 }

@@ -1,7 +1,6 @@
 package com.suleiman.material.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,9 @@ import android.widget.TextView;
 import com.suleiman.material.R;
 import com.suleiman.material.model.Dessert;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Suleiman on 02/03/17.
@@ -19,9 +19,7 @@ import java.util.List;
 
 public class DessertAdapter extends RecyclerView.Adapter<DessertAdapter.DessertVh> {
 
-
-    private List<Dessert> desserts = new ArrayList<>();
-
+    private List<Dessert> desserts;
     private Context context;
 
     public DessertAdapter(Context context) {
@@ -63,9 +61,9 @@ public class DessertAdapter extends RecyclerView.Adapter<DessertAdapter.DessertV
         public DessertVh(View itemView) {
             super(itemView);
 
-            mName = (TextView) itemView.findViewById(R.id.txt_name);
-            mDescription = (TextView) itemView.findViewById(R.id.txt_desc);
-            mFirstLetter = (TextView) itemView.findViewById(R.id.txt_firstletter);
+            mName = itemView.findViewById(R.id.txt_name);
+            mDescription = itemView.findViewById(R.id.txt_desc);
+            mFirstLetter = itemView.findViewById(R.id.txt_firstletter);
         }
     }
 }

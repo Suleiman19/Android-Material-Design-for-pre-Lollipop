@@ -1,15 +1,16 @@
 package com.suleiman.material.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.suleiman.material.R;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class NestedToolbarActivity extends AppCompatActivity {
 
@@ -20,10 +21,10 @@ public class NestedToolbarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nested_toolbar);
 
-        mToolbar1 = (Toolbar) findViewById(R.id.nested_toolbar_1);
-        mToolbar2 = (Toolbar) findViewById(R.id.nested_toolbar_2);
+        mToolbar1 = findViewById(R.id.nested_toolbar_1);
+        mToolbar2 = findViewById(R.id.nested_toolbar_2);
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.nested_parentframe);
+        final FrameLayout frameLayout = findViewById(R.id.nested_parentframe);
 
 
         setSupportActionBar(mToolbar2);

@@ -55,7 +55,6 @@
             android:maxLines="2"
             tools:text="A family of confections made with sugar or honey, roasted nuts, whipped egg whites, and sometimes chopped candied fruit. The consistency of nougat is chewy, and it is used in a variety of candy bars and chocolates."/>
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

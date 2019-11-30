@@ -2,11 +2,6 @@ package com.suleiman.material.activities;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,6 +29,12 @@ import com.suleiman.material.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class FabHideActivity extends AppCompatActivity {
@@ -147,8 +148,8 @@ public class FabHideActivity extends AppCompatActivity {
             }
         });
 
-        fab = (FrameLayout) findViewById(R.id.myfab_main);
-        fabBtn = (ImageButton) findViewById(R.id.myfab_main_btn);
+        fab = findViewById(R.id.myfab_main);
+        fabBtn = findViewById(R.id.myfab_main_btn);
         fabShadow = findViewById(R.id.myfab_shadow);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -223,7 +224,7 @@ public class FabHideActivity extends AppCompatActivity {
                 view.setTag("DROPDOWN");
             }
 
-            TextView textView = (TextView) view.findViewById(android.R.id.text1);
+            TextView textView = view.findViewById(android.R.id.text1);
             textView.setText(getTitle(position));
 
             return view;
@@ -236,7 +237,7 @@ public class FabHideActivity extends AppCompatActivity {
                         toolbar_spinner_item_actionbar, parent, false);
                 view.setTag("NON_DROPDOWN");
             }
-            TextView textView = (TextView) view.findViewById(android.R.id.text1);
+            TextView textView = view.findViewById(android.R.id.text1);
             textView.setText(getTitle(position));
             return view;
         }

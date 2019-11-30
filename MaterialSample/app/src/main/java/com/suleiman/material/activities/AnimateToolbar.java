@@ -3,20 +3,21 @@ package com.suleiman.material.activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.DessertAdapter;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AnimateToolbar extends AppCompatActivity {
 
@@ -35,14 +36,14 @@ public class AnimateToolbar extends AppCompatActivity {
 
         setContentView(R.layout.activity_animate_toolbar);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
+        final Toolbar toolbar = findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout = findViewById(R.id.appbar);
 
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.android_desserts));
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
@@ -58,7 +59,7 @@ public class AnimateToolbar extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
+        recyclerView = findViewById(R.id.scrollableview);
         //  Use when your list size is constant for better performance
         recyclerView.setHasFixedSize(true);
 

@@ -2,9 +2,6 @@ package com.suleiman.material.activities;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +12,10 @@ import android.widget.ImageButton;
 
 import com.suleiman.material.R;
 import com.suleiman.material.utils.Utils;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class ToolbarOverlayActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -33,7 +34,7 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black_trans80));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.black_trans80));
 
             statusBarHeight = Utils.getStatusBarHeight(this);
             isStatusBarTransparent = true;
@@ -44,7 +45,7 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
         final Animation animGrow = AnimationUtils.loadAnimation(this, R.anim.grow_color);
         final Animation animShrink = AnimationUtils.loadAnimation(this, R.anim.shrink_color);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_transparent);
+        toolbar = findViewById(R.id.toolbar_transparent);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -53,9 +54,9 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
             statusBarHolderView.setVisibility(View.GONE);
         }
 
-        fab = (ImageButton) findViewById(R.id.myfab_main_btn);
-        transFrame = (FrameLayout) findViewById(R.id.trans_bg);
-        mainBg = (FrameLayout) findViewById(R.id.test_bg);
+        fab = findViewById(R.id.myfab_main_btn);
+        transFrame = findViewById(R.id.trans_bg);
+        mainBg = findViewById(R.id.test_bg);
 
         animGrow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -91,17 +92,10 @@ public class ToolbarOverlayActivity extends AppCompatActivity {
             }
         });
 
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isGrownAnim) {
-                    transFrame.startAnimation(animShrink);
-
-                } else {
-                    transFrame.startAnimation(animGrow);
-                }
-
+                transFrame.startAnimation(isGrownAnim ? animShrink : animGrow);
             }
         });
 

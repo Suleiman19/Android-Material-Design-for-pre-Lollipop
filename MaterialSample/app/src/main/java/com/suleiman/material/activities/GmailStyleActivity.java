@@ -1,27 +1,28 @@
 package com.suleiman.material.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.GmailAdapter;
 import com.suleiman.material.model.VersionModel;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class GmailStyleActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -34,11 +35,11 @@ public class GmailStyleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gmail_style);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.gmail_toolbar);
+        final Toolbar toolbar = findViewById(R.id.gmail_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerView = (RecyclerView) findViewById(R.id.gmail_list);
+        recyclerView = findViewById(R.id.gmail_list);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -67,7 +68,7 @@ public class GmailStyleActivity extends AppCompatActivity {
         final Animation shrinkAnimation = AnimationUtils.loadAnimation(this, R.anim.simple_shrink);
 
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.gmail_fab);
+        final FloatingActionButton fab = findViewById(R.id.gmail_fab);
 
         fab.setVisibility(View.VISIBLE);
         fab.startAnimation(growAnimation);
@@ -91,14 +92,14 @@ public class GmailStyleActivity extends AppCompatActivity {
         });
 
 
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.gmail_coordinator);
+        CoordinatorLayout coordinatorLayout = findViewById(R.id.gmail_coordinator);
         View bottomSheet = coordinatorLayout.findViewById(R.id.gmail_bottom_sheet);
 
         BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
 
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+            public void onStateChanged(View bottomSheet, int newState) {
 
                 switch (newState) {
 

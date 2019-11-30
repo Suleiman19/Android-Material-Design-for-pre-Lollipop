@@ -1,11 +1,6 @@
 package com.suleiman.material.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,10 +11,15 @@ import com.suleiman.material.model.VersionModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * Created by Suleiman on 15-06-2015.
- *
- * Simple Quick Return implementation using Design Support Library.
+ * Simple Quick Return implementation using Design Support Library.T
  * Added Bottom Sheet
  */
 public class QuickReturnActivity extends AppCompatActivity {
@@ -33,12 +33,12 @@ public class QuickReturnActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_quick_return);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.quickreturn_toolbar);
+        final Toolbar toolbar = findViewById(R.id.quickreturn_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.quickreturn_coordinator);
-        recyclerView = (RecyclerView) findViewById(R.id.quickreturn_list);
+        mCoordinatorLayout = findViewById(R.id.quickreturn_coordinator);
+        recyclerView = findViewById(R.id.quickreturn_list);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,9 +58,7 @@ public class QuickReturnActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         }
 
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,7 +69,6 @@ public class QuickReturnActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.action_settings:
                 return true;
@@ -79,7 +76,6 @@ public class QuickReturnActivity extends AppCompatActivity {
                 supportFinishAfterTransition();
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

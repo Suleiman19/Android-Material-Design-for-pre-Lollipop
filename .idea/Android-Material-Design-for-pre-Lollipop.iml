@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="Android-Material-Design-for-pre-Lollipop" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../gen" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../Android-Material-Design-for-pre-Lollipop/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../Android-Material-Design-for-pre-Lollipop/gen" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../Android-Material-Design-for-pre-Lollipop/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/../../Android-Material-Design-for-pre-Lollipop/res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../Android-Material-Design-for-pre-Lollipop/assets" />
@@ -13,15 +13,12 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/build" />
-    <output-test url="file://$MODULE_DIR$/build" />
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

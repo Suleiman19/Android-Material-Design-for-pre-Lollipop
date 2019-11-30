@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:behavior_peekHeight="312dp"
-    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+    app:layout_behavior="@string/bottom_sheet_behavior">
 
 
     <FrameLayout
@@ -26,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="56dp"
-                android:paddingStart="56dp">
+                android:paddingStart="56dp"
+                android:paddingLeft="56dp">
 
                 <TextView
                     style="@style/TextAppearance.AppCompat.Headline"
@@ -39,8 +39,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_margin_half"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:orientation="horizontal">
 
                     <RatingBar
@@ -64,8 +64,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/activity_margin_half"
                     android:paddingTop="@dimen/activity_margin_half"
+                    android:paddingBottom="@dimen/activity_margin_half"
                     android:text="12 min away"
                     android:textColor="?attr/colorPrimary" />
 
@@ -94,8 +94,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="740, Valencia St, San Francisco, CA"
                     android:textColor="@android:color/primary_text_light" />
 
@@ -116,8 +116,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="(415) 349-0942"
                     android:textColor="@android:color/primary_text_light" />
 
@@ -138,8 +138,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="Wed, 10 AM - 9 PM"
                     android:textColor="@android:color/primary_text_light" />
 
@@ -162,18 +162,18 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/gmail_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/gmail_fab"
             android:layout_gravity="end"
-            android:visibility="gone"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:clickable="true"
-            android:src="@drawable/ic_action_add" />
-
+            android:focusable="true"
+            android:src="@drawable/ic_action_add"
+            android:visibility="gone" />
 
     </FrameLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

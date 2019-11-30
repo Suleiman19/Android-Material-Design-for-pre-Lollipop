@@ -3,15 +3,6 @@ package com.suleiman.material.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,12 +11,22 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.suleiman.material.R;
 import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 public class TabAnimationActivity extends AppCompatActivity {
 
@@ -34,17 +35,17 @@ public class TabAnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_animation);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.tabanim_toolbar);
+        final Toolbar toolbar = findViewById(R.id.tabanim_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
+        final ViewPager viewPager = findViewById(R.id.tabanim_viewpager);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
+        TabLayout tabLayout = findViewById(R.id.tabanim_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
@@ -56,11 +57,9 @@ public class TabAnimationActivity extends AppCompatActivity {
                         break;
                     case 1:
                         showToast("Two");
-
                         break;
                     case 2:
                         showToast("Three");
-
                         break;
                 }
             }
@@ -82,7 +81,7 @@ public class TabAnimationActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), "CAT");
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.ripple_material_light)), "DOG");
         adapter.addFrag(new DummyFragment(getResources().getColor(R.color.button_material_dark)), "MOUSE");
@@ -113,8 +112,8 @@ public class TabAnimationActivity extends AppCompatActivity {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
+        public ViewPagerAdapter(FragmentManager fm, int behavior) {
+            super(fm, behavior);
         }
 
         @Override
