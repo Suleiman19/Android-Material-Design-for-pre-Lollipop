@@ -31,8 +31,15 @@
     <color name="amber">#FFC107</color>
     <color name="orange">#FF9800</color>
     <color name="deep_orange">#FF5722</color>
+    <color name="brown">#795548</color>
+    <color name="grey">#E0E0E0</color>
 
     <color name="white_70">#B3FFFFFF</color>
+
     <color name="white_40">#66FFFFFF</color>
+
+    <color name="cyan_50">#E0F7FA</color>
+    <color name="amber_50">#FFF8E1</color>
+    <color name="purple_50">#F3E5F5</color>
 
 </resources>

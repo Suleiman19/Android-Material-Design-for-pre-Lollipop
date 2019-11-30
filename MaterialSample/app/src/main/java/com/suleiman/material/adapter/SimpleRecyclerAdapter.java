@@ -52,8 +52,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     @Override
     public VersionViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerlist_item, viewGroup, false);
-        VersionViewHolder viewHolder = new VersionViewHolder(view);
-        return viewHolder;
+        return new VersionViewHolder(view);
     }
 
     @Override

@@ -21,6 +21,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -37,7 +38,7 @@ public class TabAnimationActivity extends AppCompatActivity {
 
         final Toolbar toolbar = findViewById(R.id.tabanim_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ViewPager viewPager = findViewById(R.id.tabanim_viewpager);
         setupViewPager(viewPager);
@@ -82,9 +83,12 @@ public class TabAnimationActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.accent_material_light)), "CAT");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.ripple_material_light)), "DOG");
-        adapter.addFrag(new DummyFragment(getResources().getColor(R.color.button_material_dark)), "MOUSE");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.blue_grey)), "CAT");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.amber)), "DOG");
+        adapter.addFrag(new DummyFragment(
+                ContextCompat.getColor(this, R.color.cyan)), "MOUSE");
         viewPager.setAdapter(adapter);
     }
 
@@ -108,7 +112,7 @@ public class TabAnimationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    static class ViewPagerAdapter extends FragmentPagerAdapter {
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
