@@ -17,6 +17,7 @@ import com.suleiman.material.adapter.SimpleRecyclerAdapter;
 import com.suleiman.material.model.VersionModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -157,19 +158,16 @@ public class TabAnimationActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.dummy_fragment, container, false);
 
-            final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.dummyfrag_bg);
+            final FrameLayout frameLayout = view.findViewById(R.id.dummyfrag_bg);
             frameLayout.setBackgroundColor(color);
 
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.dummyfrag_scrollableview);
+            RecyclerView recyclerView = view.findViewById(R.id.dummyfrag_scrollableview);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setHasFixedSize(true);
 
-            List<String> list = new ArrayList<String>();
-            for (int i = 0; i < VersionModel.data.length; i++) {
-                list.add(VersionModel.data[i]);
-            }
+            List<String> list = Arrays.asList(VersionModel.data);
 
             adapter = new SimpleRecyclerAdapter(list);
             recyclerView.setAdapter(adapter);
